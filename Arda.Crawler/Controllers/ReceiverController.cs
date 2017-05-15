@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Arda.Crawler.Controllers
 {
@@ -26,8 +27,10 @@ namespace Arda.Crawler.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]object obj)
         {
+            string value = JsonConvert.SerializeObject(obj);
+
             _messages.Add(value);
         }
        
